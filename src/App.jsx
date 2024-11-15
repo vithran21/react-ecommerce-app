@@ -1,4 +1,4 @@
-// src/App.js
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,7 +8,7 @@ import ProductDetails from './pages/ProductDetails';
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout';
 import AuthPage from './pages/AuthPage';
-import './styles/App.css';
+import Confirmation from './pages/Confirmation';
 
 const App = () => (
   <Router>
@@ -21,6 +21,7 @@ const App = () => (
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </div>
       <Footer />

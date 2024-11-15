@@ -1,10 +1,11 @@
-// src/pages/Checkout.jsx
+// src/pages/Confirmation.jsx
 import React from 'react';
 
-const Checkout = ({ cartItems, user }) => {
+const Confirmation = ({ cartItems, user }) => {
   return (
     <div>
-      <h2>Checkout</h2>
+      <h2>Order Confirmation</h2>
+      <p>Order for {user.username} has been confirmed!</p>
       <p>Shipping to: {user.address}, {user.city}, {user.pincode}</p>
       <p>Phone: {user.phoneNumber}</p>
       <ul>
@@ -14,9 +15,9 @@ const Checkout = ({ cartItems, user }) => {
           </li>
         ))}
       </ul>
-      <button>Confirm Order</button>
+      <button>Finish</button>
     </div>
   );
 };
 
-export default Checkout;
+export default Confirmation;

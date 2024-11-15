@@ -1,25 +1,26 @@
-/* src/styles/Header.css */
-
+/* src/components/Header.css */
 .header {
-    background-color: #222;
-    padding: 20px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    color: #ffffff;
-  }
-  
-  .header-link {
-    color: #ffffff;
-    text-decoration: none;
-    margin-right: 15px;
-  }
-  
-  .header-button {
-    background-color: #444;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: #333;
+  color: white;
+}
+
+.brand-name a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 1.5em;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}

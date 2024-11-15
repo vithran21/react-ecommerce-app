@@ -1,19 +1,27 @@
-// src/pages/ProductDetails.js
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import '../styles/ProductDetails.css';
-import '../styles/GlobalPage.css';
+// src/pages/ProductDetails.jsx
+import React, { useState } from 'react';
 
-const ProductDetails = () => {
-  const { productId } = useParams();
-  
-  const product = { id: productId, name: `Product ${productId}`, description: 'Detailed description of the product', price: 50 };
+const ProductDetails = ({ product }) => {
+  const [quantity, setQuantity] = useState(1);
+
+  const addToCart = () => {
+    const cartItem = { ...product, quantity };
+    // Add logic to store cartItem in cart state (e.g., context or Redux store)
+    console.log('Product added to cart:', cartItem);
+  };
 
   return (
-    <div className="product-details page-container">
+    <div>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
+      <input
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      />
+      <button onClick={addToCart}>Add to Cart</button>
     </div>
   );
 };

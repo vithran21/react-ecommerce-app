@@ -1,14 +1,18 @@
-// src/pages/AuthPage.js
-import React from 'react';
-import AuthForm from '../components/AuthForm';
-import '../styles/AuthPage.css';
-import '../styles/GlobalPage.css';
+// src/pages/AuthPage.jsx
+import React, { useState } from 'react';
+import Login from './Login';
+import Signup from './Signup';
 
-const AuthPage = () => (
-  <div className="auth-page page-container">
-    <h1>Login / Signup</h1>
-    <AuthForm />
-  </div>
-);
+const AuthPage = () => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <div>
+      <button onClick={() => setIsLogin(true)}>Login</button>
+      <button onClick={() => setIsLogin(false)}>Signup</button>
+      {isLogin ? <Login /> : <Signup />}
+    </div>
+  );
+};
 
 export default AuthPage;
