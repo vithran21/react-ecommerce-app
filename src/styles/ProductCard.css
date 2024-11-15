@@ -1,0 +1,13 @@
+/* src/styles/ProductCard.css */
+.product-card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+  }
+  
+  .product-link {
+    color: lightblue;
+    text-decoration: none;
+  }
+  

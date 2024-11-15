@@ -1,0 +1,9 @@
+/* src/styles/GlobalPage.css */
+.page-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  

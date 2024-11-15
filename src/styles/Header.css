@@ -1,0 +1,25 @@
+/* src/styles/Header.css */
+
+.header {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #ffffff;
+  }
+  
+  .header-link {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  .header-button {
+    background-color: #444;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

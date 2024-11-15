@@ -1,0 +1,22 @@
+/* src/styles/App.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background-color: #000000; /* black background as requested */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
