@@ -1,8 +1,10 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
+import '../styles/LoginSignup.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState({ email: '', password: '' });
 
   const handleChange = (e) => {
     setCredentials({
@@ -11,18 +13,59 @@ const Login = () => {
     });
   };
 
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {};
+
+    if (!credentials.email) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(credentials.email)) {
+      newErrors.email = 'Invalid email format';
+      isValid = false;
+    }
+
+    if (!credentials.password) {
+      newErrors.password = 'Password is required';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here (e.g., API call)
-    console.log(credentials);
+
+    if (validateForm()) {
+      console.log('Submitted Data:', credentials);
+      // Add login API logic here
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={credentials.email}
+          onChange={handleChange}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+        />
+        {errors.password && <span className="error">{errors.password}</span>}
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 };
 
