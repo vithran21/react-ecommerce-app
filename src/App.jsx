@@ -7,7 +7,8 @@ import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout';
-import AuthPage from './pages/AuthPage';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Confirmation from './pages/Confirmation';
 
 const App = () => (
@@ -20,7 +21,8 @@ const App = () => (
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/signup" element={<Signup />} />
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </div>

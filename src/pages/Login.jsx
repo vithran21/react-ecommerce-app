@@ -1,10 +1,11 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../styles/LoginSignup.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [errors, setErrors] = useState({ email: '', password: '' });
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     setCredentials({
@@ -13,56 +14,28 @@ const Login = () => {
     });
   };
 
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = {};
-
-    if (!credentials.email) {
-      newErrors.email = 'Email is required';
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(credentials.email)) {
-      newErrors.email = 'Invalid email format';
-      isValid = false;
-    }
-
-    if (!credentials.password) {
-      newErrors.password = 'Password is required';
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      console.log('Submitted Data:', credentials);
-      // Add login API logic here
+    try {
+      const response = await axios.post('/api/login', credentials); // Replace with your API endpoint
+      setMessage(response.data.message || 'Login successful!');
+      // Save token or user info in localStorage, if required
+      localStorage.setItem('token', response.data.token);
+    } catch (error) {
+      setMessage(
+        error.response?.data?.message || 'Invalid email or password'
+      );
     }
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
+      {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={credentials.email}
-          onChange={handleChange}
-        />
-        {errors.email && <span className="error">{errors.email}</span>}
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={credentials.password}
-          onChange={handleChange}
-        />
-        {errors.password && <span className="error">{errors.password}</span>}
+        <input name="email" type="email" placeholder="Email" value={credentials.email} onChange={handleChange} />
+        <input name="password" type="password" placeholder="Password" value={credentials.password} onChange={handleChange} />
         <button type="submit">Login</button>
       </form>
     </div>
